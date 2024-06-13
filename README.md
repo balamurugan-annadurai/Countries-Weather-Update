@@ -27,7 +27,3 @@ This project fetches country data from the REST Countries API and displays the d
 - JavaScript
 - REST Countries API
 - OpenWeatherMap API
-
-## 📧 Contact
-
-For any inquiries or feedback, please reach out at [LinkedIn](www.linkedin.com/in/balamurugan-a)
