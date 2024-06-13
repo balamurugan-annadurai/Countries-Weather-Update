@@ -1,7 +1,7 @@
 /**************************start**************************/
 
 //// fetching country data to display country details 
-const fetchData = fetch("https://restountries.com/v3.1/all");
+const fetchData = fetch("https://restcountries.com/v3.1/all");
 var array;
 const data = fetchData
 .then(response =>response.json())
