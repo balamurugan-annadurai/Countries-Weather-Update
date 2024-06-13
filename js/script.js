@@ -1,44 +1,54 @@
-const fetchData = fetch("https://restcountries.com/v3.1/all");
+/**************************start**************************/
+
+//// fetching country data to display country details 
+const fetchData = fetch("https://restountries.com/v3.1/all");
 var array;
 const data = fetchData
 .then(response =>response.json())
 .then(data => {
-     displayCountriesNames(data);
+     displayCountriesNames(data); // function to display country details
 })
 .catch((data)=>{
-    errorMsg(data);
+    errorMsg(data);  // function to display error if unable to fetch country details
 });
+//// fetching country data to display country details 
 
+//// creating basic variables
 const container = document.createElement("div");
-    container.setAttribute("class","container");
-    document.body.append(container);
+container.setAttribute("class","container");
+document.body.append(container);
 
-    const h1 = document.createElement("h1");
-    h1.textContent = "Countries Weather Update";
-    h1.setAttribute("class","text-center");
-    h1.setAttribute("id","title");
+var h1 = document.createElement("h1");
+h1.textContent = "Countries Weather Update";
+h1.setAttribute("class","text-center");
+h1.setAttribute("id","title");
     container.append(h1);
 
-    var tempDisplay = document.createElement("div");
-    tempDisplay.setAttribute("class","col-6");
-    var icon = document.createElement("i");
-    const iconBtn = document.createElement("a");
-    icon.setAttribute("class","");
-    iconBtn.append(icon);
-    tempDisplay.append(iconBtn);
+var tempDisplay = document.createElement("div");
+tempDisplay.setAttribute("class","col-6");
+var icon = document.createElement("i");
+const iconBtn = document.createElement("a");
+icon.setAttribute("class","");
+iconBtn.append(icon);
+tempDisplay.append(iconBtn);
 
-    var tempH1 = document.createElement('h1');
-     document.body.addEventListener("mousedown",()=>{
-        tempDisplay.removeAttribute("class","tempDisplay");
-        document.body.style.overflow = "auto";
-        tempH1.textContent = "";
+/////////////////////////////////////////////
 
-    })
+//// Event to close temp display tab
+var tempH1 = document.createElement('h1');
+    document.body.addEventListener("mousedown",()=>{
+    tempDisplay.removeAttribute("class","tempDisplay");
+    document.body.style.overflow = "auto";
+    tempH1.textContent = "";
+})
 
-    const row = document.createElement("div");
-    row.setAttribute("class","row");
-    container.append(row);
+const row = document.createElement("div");
+row.setAttribute("class","row");
+container.append(row);
 
+//////////////////////////////////////
+
+//// function to display countries
 function displayCountriesNames(array){
 
     for(let i=0;i<array.length;i++){
@@ -103,21 +113,23 @@ function displayCountriesNames(array){
         
         col.append(card);
     }
-    console.log(array);
 }
- 
+///////////////////////////////////////////////
 
-
+/// function to display error msg when countries details not able to fetch
 function errorMsg(data){
     const container = document.createElement("div");
     container.setAttribute("class","container vh-100 d-flex justify-content-center align-items-center");
     document.body.append(container);
     const errorMsg = document.createElement("h1");
     errorMsg.textContent = `${data.message} - please try again later!`;
+    h1.setAttribute("class","d-none")
     container.append(errorMsg);
 }
+////////////////////////////////////////////////
 
 
+/// function to get countries temp
 function showTempByClick(id){
       
        let captialCity = id;
@@ -126,7 +138,7 @@ function showTempByClick(id){
 
        weatherData.then(res => res.json())
        .then(data => {
-         displayTemp(data);
+         displayTemp(data); // fucntion to display country temp
        })
        .catch(() => {
          tempH1.textContent =  `Please try again later 🙏`;
@@ -134,8 +146,9 @@ function showTempByClick(id){
        });
     
 }
+////////////////////////////////////////
 
-
+/// function to display country temp
 function displayTemp(data){
     if(data.main.temp < 10){
         tempH1.textContent =  `${data.main.temp}°C 🥶`;
@@ -150,7 +163,11 @@ function displayTemp(data){
     }
     tempH1.setAttribute("class","text-center fs-1")
 }
+/////////////////////////////////////
 tempDisplay.append(tempH1);
+
+/**************************End**************************/
+
 
 
 
