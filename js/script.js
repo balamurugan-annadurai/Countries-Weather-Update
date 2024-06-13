@@ -80,6 +80,7 @@ function displayCountriesNames(array){
             const captialCity = event.srcElement.id;
             tempDisplay.setAttribute("class","tempDisplay");
             container.append(tempDisplay);
+            tempH1.textContent =  `loading...⏳`;
             showTempByClick(captialCity);
         }) 
 
@@ -150,6 +151,8 @@ function showTempByClick(id){
 
 /// function to display country temp
 function displayTemp(data){
+
+    
     if(data.main.temp < 10){
         tempH1.textContent =  `${data.main.temp}°C 🥶`;
     }else if(data.main.temp < 20 && data.main.temp >= 10){
